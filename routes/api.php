@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/products', function () {
+    return Recipe::all();
+});
+
+Route::post('/products', function () {
+});
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
