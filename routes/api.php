@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Recipe;
+use App\Http\Controllers\RecipeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,12 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/products', function () {
-    return Recipe::all();
-});
+Route::get('/products', [RecipeController::class, 'index']);
 
-Route::post('/products', function () {
-});
+// Route::post('/products', function () {
+//     return Recipe::create([
+//         'name' => 'Recipe One',
+//         'slug' => 'recipe-one',
+//         'description' => 'This is recipe one'
+//     ]);
+// });
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
