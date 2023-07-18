@@ -20,7 +20,13 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'slug' => 'required',
+            'description' => 'required'
+        ]);
+
+        return Recipe::create($request->all());
     }
 
     /**
