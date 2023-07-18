@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/recipes', [RecipeController::class, 'index']);
 Route::post('/recipe', [RecipeController::class, 'store']);
 Route::get('/recipe/{id}', [RecipeController::class, 'show']);
+Route::put('/recipe/{id}', [RecipeController::class, 'update']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

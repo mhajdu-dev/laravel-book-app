@@ -42,7 +42,9 @@ class RecipeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $recipe = Recipe::find($id);
+        $recipe->update($request->all());
+        return $recipe;
     }
 
     /**
