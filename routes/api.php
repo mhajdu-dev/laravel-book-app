@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RecipeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 // Route::resource('recipes', RecipeController::class);
 
 //Public routes
+Route::post('/auth/register', [AuthController::class, 'createUser']);
+Route::post('/auth/login', [AuthController::class, 'loginUser']);
+
 Route::get('/recipes', [RecipeController::class, 'index']);
 Route::get('/recipe/{id}', [RecipeController::class, 'show']);
 Route::get('/recipe/search/{name}', [RecipeController::class, 'search']);
