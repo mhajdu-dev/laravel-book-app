@@ -54,4 +54,12 @@ class RecipeController extends Controller
     {
         return Recipe::destroy($id);
     }
+
+    /**
+     * Search for a recipe using its name
+     */
+    public function search(string $name)
+    {
+        return Recipe::where('name', 'like', '%' . $name . '%')->get();
+    }
 }
