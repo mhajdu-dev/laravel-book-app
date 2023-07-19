@@ -17,14 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 // Route::resource('recipes', RecipeController::class);
 
-
+//Public routes
 Route::get('/recipes', [RecipeController::class, 'index']);
-Route::post('/recipe', [RecipeController::class, 'store']);
 Route::get('/recipe/{id}', [RecipeController::class, 'show']);
-Route::put('/recipe/{id}', [RecipeController::class, 'update']);
-Route::delete('/recipe/{id}', [RecipeController::class, 'destroy']);
 Route::get('/recipe/search/{name}', [RecipeController::class, 'search']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+//Protected routes
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/recipe', [RecipeController::class, 'store']);
+    Route::put('/recipe/{id}', [RecipeController::class, 'update']);
+    Route::delete('/recipe/{id}', [RecipeController::class, 'destroy']);
 });
