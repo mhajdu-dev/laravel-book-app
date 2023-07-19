@@ -52,6 +52,6 @@ class RecipeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return Recipe::destroy($id);
     }
 }
